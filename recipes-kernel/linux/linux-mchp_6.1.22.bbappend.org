@@ -1,0 +1,5 @@
+FILESEXTRAPATHS:prepend := "${THISDIR}/linux-mchp-6.1.22:"
+
+SRC_URI:append:sama5d27-som1-ek-sd = " \
+	file://defconfig \
+"

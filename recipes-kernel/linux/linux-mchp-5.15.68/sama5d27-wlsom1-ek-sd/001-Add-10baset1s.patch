@@ -1,0 +1,34 @@
+diff --git a/drivers/net/usb/Kconfig b/drivers/net/usb/Kconfig
+index b554054a7560..8fc83ad4bbd1 100644
+--- a/drivers/net/usb/Kconfig
++++ b/drivers/net/usb/Kconfig
+@@ -129,6 +129,17 @@ config USB_LAN78XX
+ 
+ 	  To compile this driver as a module, choose M here: the
+ 	  module will be called lan78xx.
++config USB_LAN867X
++	tristate "Microchip LAN867X Based USB Ethernet Adapters"
++	depends on USB_USBNET
++	select PHYLIB
++	select SMSC_PHY
++	select BITREVERSE
++	select CRC16
++	select CRC32
++	help
++	  This option adds support for Microchip LAN867X based USB 2.0
++	  10/100 Ethernet adapters.
+ 
+ config USB_USBNET
+ 	tristate "Multi-purpose USB Networking Framework"
+diff --git a/drivers/net/usb/Makefile b/drivers/net/usb/Makefile
+index 4964f7b326fb..695e56f1cb3e 100644
+--- a/drivers/net/usb/Makefile
++++ b/drivers/net/usb/Makefile
+@@ -10,6 +10,7 @@ obj-$(CONFIG_USB_RTL8150)	+= rtl8150.o
+ obj-$(CONFIG_USB_RTL8152)	+= r8152.o
+ obj-$(CONFIG_USB_HSO)		+= hso.o
+ obj-$(CONFIG_USB_LAN78XX)	+= lan78xx.o
++obj-$(CONFIG_USB_LAN867X)	+= lan867x_phy.o
+ obj-$(CONFIG_USB_NET_AX8817X)	+= asix.o
+ asix-y := asix_devices.o asix_common.o ax88172a.o
+ obj-$(CONFIG_USB_NET_AX88179_178A)      += ax88179_178a.o
